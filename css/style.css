@@ -1,0 +1,158 @@
+:root {
+  --softBlue: hsl(215, 51%, 70%);
+  --cyan: hsl(178, 100%, 50%);
+  --mainBG: hsl(217, 54%, 11%);
+  --cardBG: hsl(216, 50%, 16%);
+  --darkBlue: hsl(215, 32%, 27%);
+  --white: hsl(0, 0%, 100%);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--mainBG);
+  display: grid;
+  font-size: 1.8rem;
+  font-family: "Outfit", sans-serif;
+  line-height: 1.5;
+  height: 100vh;
+  place-content: center;
+}
+
+/* Card */
+.card {
+  border-radius: 0.8rem;
+  background-color: var(--cardBG);
+  padding: 2rem;
+  max-width: 100%;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.card__image {
+  border-radius: 0.8rem;
+  cursor: pointer;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  width: 32rem;
+  transition: all 1s;
+}
+
+.card__container-image {
+  position: relative;
+}
+
+.card__container-image::after {
+  animation: appear 1s;
+}
+
+.card:hover .card__container-image::after {
+  background-image: url("../images/icon-view.svg");
+  background-size: cover;
+  content: "";
+  display: block;
+  height: 4.8rem;
+  filter: contrast(0.8);
+  position: absolute;
+  width: 4.8rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card:hover .card__image {
+  filter: blur(0.1rem);
+  filter: contrast(0.3);
+}
+
+/* Animation hover */
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.card__body {
+  margin-top: 2rem;
+}
+
+.card__title {
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.card__text {
+  color: var(--softBlue);
+  margin-bottom: 1rem;
+}
+
+.card__feature {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__footer {
+  margin-top: 1.6rem;
+}
+
+/* Line */
+.line {
+  border-bottom: 0.1rem solid var(--darkBlue);
+  padding: 1rem 0;
+}
+
+/* Label */
+.label {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.label--gap-2 {
+  gap: 2rem;
+}
+
+.label__image--border {
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.1rem var(--cyan);
+}
+
+.label__image--small {
+  width: 3.2rem;
+  height: 3.2rem;
+}
+
+.label__text span {
+  color: var(--cyan);
+}
+
+.label__text--cyan {
+  color: var(--cyan);
+}
+
+.label__text--soft-blue {
+  color: var(--softBlue);
+}
+
+@media screen and (min-width: 375px) {
+  .card {
+    width: 35rem;
+  }
+}
